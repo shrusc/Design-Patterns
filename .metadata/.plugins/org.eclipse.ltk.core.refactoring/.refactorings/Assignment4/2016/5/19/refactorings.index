@@ -1,0 +1,23 @@
+1462169781392	Rename type 'PrintXmlVisitor'
+1462171852824	Move folder
+1462174568475	Move compilation unit
+1462174607399	Delete element
+1462174711441	Delete element
+1462174759711	Delete element
+1462344289997	Rename type 'TestXmlComposite'
+1462386848691	Rename type 'Node'
+1462389857179	Rename type 'TailNode'
+1462394896073	Delete element
+1462394901215	Delete element
+1462395458583	Rename type 'TestXmlCompositeVisitor'
+1462397003250	Rename type 'SAXDriverExample'
+1462404245312	Rename type 'XmlTagNodeVisitor'
+1462468993374	Rename type 'ChainObject'
+1462469031489	Rename type 'AsterixObject'
+1462469067087	Rename type 'AsterixCharacter'
+1462469091200	Rename type 'DotObject'
+1462469180498	Rename type 'CharacterObject'
+1462469204208	Rename type 'TailObject'
+1462469223944	Rename type 'ChainObjectFactory'
+1462469652588	Rename method 'getObject'
+1462470835849	Rename method 'getObject'

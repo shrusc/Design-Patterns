@@ -1,0 +1,146 @@
+package assignment2;
+
+import java.util.*;
+
+public class BinarySearchTree <E> extends AbstractCollection<E> {
+
+	private Node<E> root;
+	private int modificationCount;
+	//Strategy to determine the order in which data is stored
+	private Comparator<E> comparator;
+
+	public BinarySearchTree(Comparator<E> comparator){
+		this.comparator = comparator;
+		root = new NullNode<E>(); 
+	}
+
+	/**
+	 * Adds a single data node to the tree. Fails when duplicates are added.
+	 * @returns true on success and false on failure
+	 * @param data - data to be inserted
+	 */
+	public boolean add(E data) {
+		boolean success = true;
+		modificationCount++;
+		if(this.contains(data)) 
+			success = false;
+		else {
+			root = root.addNode(data,comparator);
+			success =  true;
+		}
+		return success;
+	}
+
+	/**
+	 * @returns a string representation of the BST.
+	 */
+	public String toString() {
+		Iterator<E> iterator = this.iterator();
+
+		if (! iterator.hasNext())
+			return "[]";
+		
+		StringBuilder stringBuilderObject = new StringBuilder();
+		stringBuilderObject.append("Binary Search Tree info: ");
+		stringBuilderObject.append('[');
+		while (iterator.hasNext()) {
+			stringBuilderObject.append(iterator.next()); 
+			if (! iterator.hasNext())
+				stringBuilderObject.append(']');
+			else
+				stringBuilderObject.append(", ");
+		}
+		return stringBuilderObject.toString();
+	}
+
+	/**
+	 * @returns an array containing all of the elements in the
+	 * BST in ordered sequence.
+	 */
+	public Object[] toArray() {
+		Object[] resultArray = new Object [this.size()];
+		int arrayIndex = 0;	
+		Iterator<E> iterator = this.iterator();
+		while (iterator.hasNext()) {
+			E element= iterator.next();
+			resultArray[arrayIndex] = element;
+			arrayIndex ++;
+		}
+		return resultArray;
+	}
+
+	/**.
+	 * @returns - size of the BST
+	 */
+	@Override
+	public int size() {
+		return root.size();
+	}
+
+	/**.
+	 * @returns - Iterator for the BST
+	 */
+	@Override
+	public Iterator<E> iterator() {
+		return new BinarySearchTreeIterator();
+	}
+
+	private class BinarySearchTreeIterator implements Iterator<E> {
+		private Stack<Node<E>> stack = new Stack<>();
+		private Node<E> current;
+		int initialModificationCount;
+
+		public BinarySearchTreeIterator() {
+			current = root;
+			initialModificationCount = modificationCount;
+			//Push all the leftNodes onto the stack
+			while (!current.isNull()) {
+				stack.push(current);
+				current = current.leftNode;
+			}
+		}
+
+		/**
+		 * @returns - true if next node present else returns false
+		 * @throws - ConcurrentModificationException 
+		 * if there is any modification to list
+		 */
+		public boolean hasNext() {
+			if (initialModificationCount != modificationCount) 
+				throw new ConcurrentModificationException();
+			return !stack.isEmpty();
+		}
+
+		/**
+		 * @returns - data of the next node
+		 * @throws - ConcurrentModificationException -if there 
+		 * is any modification to list
+		 * @throws - NoSuchElementException - if there are no
+		 * other elements in the tree
+		 */
+		public E next(){
+			if (initialModificationCount != modificationCount) 
+				throw new ConcurrentModificationException();
+			if (!hasNext())
+				throw new NoSuchElementException();
+			Node<E> node = stack.pop();
+			E result = node.nodeData;
+			//Go one step right
+			if (!node.rightNode.isNull()) {
+				node = node.rightNode;
+				//Adding all the leftNodes to the stack as u traverse
+				while (!node.isNull()) {
+					stack.push(node);
+					node = node.leftNode;
+				}
+			}
+			return result;
+		}
+
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+	}
+
+}
+

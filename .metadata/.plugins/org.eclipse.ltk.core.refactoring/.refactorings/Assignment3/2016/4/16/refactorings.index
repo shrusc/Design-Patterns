@@ -1,0 +1,13 @@
+1460404159310	Rename type 'IllegalDatabaseDataException'
+1460529161618	Delete element
+1460576024876	Rename local variable 'cursor1'
+1460590580814	Delete element
+1460591585034	Rename field 'data'
+1460661033405	Rename type 'DatabaseAddCommand'
+1460661125490	Rename method 'add'
+1460661176818	Rename method 'add'
+1460661382787	Rename local variable 'addCustomerC'
+1460661392136	Rename local variable 'addAccountTypes'
+1460661418415	Rename local variable 'add'
+1460661437615	Rename local variable 'addJavaArray'
+1460661462200	Rename local variable 'addCustomerC'

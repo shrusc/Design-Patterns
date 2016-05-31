@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;assignment3.Cursor.data&apos; in &apos;assignment3.Cursor&apos;&#x0A;- Original project: &apos;Assignment3&apos;&#x0A;- Original element: &apos;assignment3.Cursor.data&apos;&#x0A;- Getter method name: &apos;getData&apos;&#x0A;- Setter method name: &apos;setData&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type&#x0A;- Generate method comments" comments="true" declaring="true" description="Encapsulate field &apos;data&apos;" flags="589830" getter="getData" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;assignment3{Cursor.java[Cursor^data" insertion="1" setter="setData" stamp="1459462707975" version="1.0" visibility="1"/>
+</session>
